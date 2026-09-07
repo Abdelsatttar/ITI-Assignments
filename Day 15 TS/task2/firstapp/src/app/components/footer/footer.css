@@ -1,0 +1,60 @@
+.footer {
+  margin-top: 50px;
+  background-color: #212529;
+  color: white;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-bottom: 25px;
+}
+
+.social {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+.social:hover {
+  transform: translateY(-5px);
+  opacity: 0.8;
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.twitter {
+  background-color: #55acee;
+}
+
+.instagram {
+  background-color: #ac2bac;
+}
+
+.linkedin {
+  background-color: #0082ca;
+}
+
+.github {
+  background-color: #333;
+}
+
+.copyright {
+  background-color: #17191b;
+  padding: 15px;
+  font-size: 14px;
+}
+
