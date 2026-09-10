@@ -1,0 +1,90 @@
+<!-- <div>
+    <select id="category" [ngModel]="selectedCategory ">
+        <option value="all">All Categories</option>
+        <option value="sport">Sport</option>
+        <option value="classic">Classic</option>
+        <option value="luxury">Luxury</option>
+    </select>
+</div>
+
+@for(t of productsAll;track $index){
+   @if(selectedCategory == 'All' || t.category == selectedCategory){
+     
+          
+            <p>Category: {{t.category}}</p>
+    
+    }
+} -->
+
+<div class="products-section">
+
+  <div class="filter-box">
+    <label for="category">Filter by Category</label>
+
+    <select
+      id="category"
+      [(ngModel)]="selectedCategory">
+      <option value="All">All Categories</option>
+      <option value="sport">Sport</option>
+      <option value="classic">Classic</option>
+      <option value="luxury">Luxury</option>
+    </select>
+  </div>
+
+
+  <div class="products-grid">
+
+    @for(t of productsAll; track t.id) {
+
+      @if(selectedCategory === 'All' || t.category === selectedCategory) {
+
+        <div class="product-card">
+
+          <div class="image-container">
+            <img [src]="t.image" [alt]="t.name">
+
+            @if(t.inStock) {
+              <span class="stock available">In Stock</span>
+            } @else {
+              <span class="stock unavailable">Out of Stock</span>
+            }
+          </div>
+
+          <div class="product-info">
+
+            <span class="category">
+              {{ t.category }}
+            </span>
+
+            <h2>{{ t.name }}</h2>
+
+            <p class="description">
+              High quality {{ t.category }} watch with a modern and elegant design.
+            </p>
+
+            <div class="product-bottom">
+
+              <span class="price">
+                ${{ t.price }}
+              </span>
+
+              <button
+                class="buy-btn"
+                [disabled]="!t.inStock">
+                {{ t.inStock ? 'Buy Now' : 'Unavailable' }}
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    }
+
+  </div>
+
+</div>
+

@@ -1,0 +1,43 @@
+<div
+  class="card h-100 shadow-sm"
+  [appHighlight]="product.price > 100">
+
+  <div class="card-body">
+
+    <h5 class="card-title">
+      {{ product.name }}
+    </h5>
+
+    <p>
+      <strong>Price:</strong>
+      {{ product.price }}
+    </p>
+
+    <p>
+      <strong>Category:</strong>
+      {{ product.category }}
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+
+      <span
+        [class.text-success]="product.inStock"
+        [class.text-danger]="!product.inStock">
+
+        {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+
+      </span>
+    </p>
+
+    <button
+      class="btn btn-danger"
+      (click)="delete()">
+
+      Delete
+
+    </button>
+
+  </div>
+
+</div>

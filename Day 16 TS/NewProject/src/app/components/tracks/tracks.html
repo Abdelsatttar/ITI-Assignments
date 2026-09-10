@@ -1,0 +1,16 @@
+<div>
+    <select name="" id="" [(ngModel)]="selectedGenre">
+        <option value="All">All</option>
+        <option value="FrontEnd">FrontEnd</option>
+        <option value="BackEnd">BackEnd</option>
+        <option value="Database">Database</option>
+    </select>
+</div>
+@for(t of ititracks;track $index){
+   @if(selectedGenre == 'All' || t.department == selectedGenre){
+     
+          
+            <p>Department: {{t.department}}</p>
+    
+    }
+}
