@@ -34,57 +34,73 @@
 
   <div class="products-grid">
 
-    @for(t of productsAll; track t.id) {
+   @for(t of productsAll; track $index) {
 
-      @if(selectedCategory === 'All' || t.category === selectedCategory) {
+  @if(selectedCategory == 'All' || t.category == selectedCategory) {
 
-        <div class="product-card">
+    <div class="product-card" (click)="showDetails(t)">
 
-          <div class="image-container">
-            <img [src]="t.image" [alt]="t.name">
+      <div class="image-container">
+        <img [src]="t.image" [alt]="t.name">
 
-            @if(t.inStock) {
-              <span class="stock available">In Stock</span>
-            } @else {
-              <span class="stock unavailable">Out of Stock</span>
-            }
-          </div>
+        @if(t.inStock) {
+          <span class="stock available">In Stock</span>
+        } @else {
+          <span class="stock unavailable">Out of Stock</span>
+        }
+      </div>
 
-          <div class="product-info">
+      <div class="product-info">
 
-            <span class="category">
-              {{ t.category }}
-            </span>
+        <span class="category">
+          {{ t.category }}
+        </span>
 
-            <h2>{{ t.name }}</h2>
+        <h2>{{ t.name }}</h2>
 
-            <p class="description">
-              High quality {{ t.category }} watch with a modern and elegant design.
-            </p>
+        <p class="description">
+          High quality {{ t.category }} watch with a modern and elegant design.
+        </p>
 
-            <div class="product-bottom">
+        <div class="product-bottom">
 
-              <span class="price">
-                ${{ t.price }}
-              </span>
+          <span class="price">
+            ${{ t.price }}
+          </span>
 
-              <button
-                class="buy-btn"
-                [disabled]="!t.inStock">
-                {{ t.inStock ? 'Buy Now' : 'Unavailable' }}
-              </button>
+          <button
+            class="buy-btn"
+            [disabled]="!t.inStock"
+            (click)="$event.stopPropagation()">
 
-            </div>
+            {{ t.inStock ? 'Buy Now' : 'Unavailable' }}
 
-          </div>
+          </button>
+
+        </div>
+
+      </div>
+
+      @if(selectedProduct === t) {
+
+        <div class="product-details">
+
+          <h3>Product Details</h3>
+
+          <p><strong>Name:</strong> {{ t.name }}</p>
+          <p><strong>Category:</strong> {{ t.category }}</p>
+          <p><strong>Price:</strong> ${{ t.price }}</p>
+
+          @if(t.inStock) {
+            <p><strong>Status:</strong> Available</p>
+          } @else {
+            <p><strong>Status:</strong> Out of Stock</p>
+          }
 
         </div>
 
       }
 
-    }
-
-  </div>
-
-</div>
-
+    </div>
+  }
+}

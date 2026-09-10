@@ -1,1 +1,35 @@
-<p>product-card works!</p>
+<article
+  class="product-card"
+  appHighlight
+  [highlightColor]="product.price > 1000 ? '#ffe8e8' : '#e8f5e9'"
+  [defaultHighlight]="product.price > 1000">
+  <h2>{{ product.name | uppercase }}</h2>
+
+  <p>
+    <strong>Price:</strong>
+    {{ product.price | currency:'USD':'symbol':'1.2-2' }}
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    {{ product.category }}
+  </p>
+
+  @if (product.inStock) {
+    <p class="stock-status in-stock" aria-label="Product is in stock">
+      In stock
+    </p>
+  } @else {
+    <p class="stock-status out-of-stock" aria-label="Product is out of stock">
+      Out of stock
+    </p>
+  }
+
+  <button
+    type="button"
+    class="delete-button"
+    (click)="onDelete()"
+    [attr.aria-label]="'Delete ' + product.name">
+    Delete
+  </button>
+</article>

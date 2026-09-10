@@ -18,5 +18,13 @@ export class Products {
       { id: 3, name: 'Sport Watch', price: 150, image: 'watch3.jpg', inStock: true, category: 'sport' },
       { id: 4, name: 'Luxury Watch', price: 300, image: 'watch3.webp', inStock: false, category: 'luxury' }
     ];
-  } 
+  } selectedProduct: any = null;
+
+showDetails(product: any) {
+  if (this.selectedProduct === product) {
+    this.selectedProduct = null;
+  } else {
+    this.selectedProduct = product;
+  }
+}
 }

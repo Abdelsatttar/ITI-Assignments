@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { Home } from './components/home/home';
 import { Contact } from './components/contact/contact';
 import { Products } from './components/products/products';
+import { ApiProducts } from './components/api-products/api-products';
 
 export const routes: Routes = [
   {
@@ -19,8 +20,8 @@ export const routes: Routes = [
     component: Contact
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  }
+    path: 'api-products',
+    component: ApiProducts
+  },
+
 ];

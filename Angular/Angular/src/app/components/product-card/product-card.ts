@@ -1,21 +1,28 @@
-// import { Component, EventEmitter, Input, Output } from '@angular/core';
-// import { CurrencyPipe, UpperCasePipe } from '@angular/common';
-// import { Product } from 'models/product';
-// import { highlightDirective } from 'directives/highlight.directive';
-// @Component({
-//   selector: 'app-product-card',
-//   standalone: true,
-//   imports: [CurrencyPipe, UpperCasePipe,highlightDirective]
-//   templateUrl: './product-card.html',
-//   styleUrl: './product-card.css'
-// })
-// export class ProductCard {
+import { CurrencyPipe, UpperCasePipe } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
-//   @Input() product!: Product;
+import { Highlight } from '../directives/highlight';
+import { Product } from '../directives/models/product';
 
-//   @Output() deleteProduct = new EventEmitter<number>();
+@Component({
+  selector: 'app-product-card',
+  imports: [CurrencyPipe, UpperCasePipe, Highlight],
+  templateUrl: './product-card.html',
+  styleUrl: './product-card.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProductCard {
+  @Input() product!: Product;
 
-//   delete() {
-//     this.deleteProduct.emit(this.product.id);
-//   }
-// }
+  @Output() deleteProduct = new EventEmitter<number>();
+
+  onDelete(): void {
+    this.deleteProduct.emit(this.product.id);
+  }
+}
